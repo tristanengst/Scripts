@@ -1,5 +1,5 @@
 # Scripts
-Useful scripts, primarily for manipulating SLURM jobs via Python code aliased to bash commands.
+Useful scripts, primarily for manipulating SLURM jobs via Python code aliased to bash commands. Put the following in your `~/.bashrc`:
 
 ```
 alias makedef="python ~/Scripts/SwitchAccounts.py --account def --job"
