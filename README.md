@@ -7,3 +7,4 @@ alias makerrg="python ~/Scripts/SwitchAccounts.py --account rrg --job"
 alias scb="python ~/Scripts/Scb.py --job "
 alias jcat="python ~/Scripts/JobCat.py --job "
 ```
+Both `makedef` and `makerrg` accept one or more job IDs.
