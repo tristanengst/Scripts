@@ -1,5 +1,5 @@
 # Scripts
-Useful scripts, primarily for manipulating SLURM jobs via Python code aliased to bash commands. Put the following in your `~/.bashrc`:
+Useful scripts, primarily for manipulating SLURM jobs via Python code aliased to bash commands. Clone the repo into your home folder, and put the following in your `~/.bashrc`. Or clone it wherever and modify the aliases accordingly.
 
 ```
 alias makedef="python ~/Scripts/SwitchAccounts.py --account def --job"
