@@ -1,10 +1,11 @@
 import argparse
 import os
+import os.path as osp
 import time
 
 def is_newer_than(f, days):
     """Returns if file [f] is newer than [days] days."""
-    return os.path.getmtime(f) > time.time() + days * 86400
+    return osp.getmtime(f) > time.time() + days * 86400
 
 P = argparse.ArgumentParser()
 P.add_argument("--dir",
@@ -15,7 +16,8 @@ P.add_argument("--out", required=True,
     help="Name of tar file to create")
 P.add_argument("--ignore_hidden", default=1, type=int, choices=[0, 1],
     help="Ignore hidden files")
-
+P.add_argument("--ignore_errors", default=0, type=int, choices=[0, 1],
+    help="Ignore errors in osp.getmtime(). I think ComputeCanada breaks things?")
 args = P.parse_args()
 
 files_in_folder = os.listdir(args.dir)
