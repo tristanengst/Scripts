@@ -12,10 +12,8 @@ Both `makedef` and `makerrg` accept one or more job IDs.
 
 A bunch of other functionality is useful on APEX lab workstations. Quick install:
 ```
-cd ; git clone https://github.com/tristanengst/Scripts
-cd Scripts
-cat WorkstationAliases.txt >> ~/.zshrc
-cat WorkstationAliases.txt >> ~/.bash
+cd ; git clone https://github.com/tristanengst/Scripts ; cd Scripts
+cat WorkstationAliases.txt >> ~/.zshrc ; cat WorkstationAliases.txt >> ~/.bashrc
 ```
 giving the following aliases, and more!
 ```
