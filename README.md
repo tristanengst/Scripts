@@ -10,7 +10,14 @@ alias jcat="python ~/Scripts/JobCat.py --job "
 ```
 Both `makedef` and `makerrg` accept one or more job IDs.
 
-For servers and workstations:
+A bunch of other functionality is useful on APEX lab workstations. Quick install:
+```
+cd ; git clone https://github.com/tristanengst/Scripts
+cd Scripts
+cat WorkstationAliases.txt >> ~/.zshrc
+cat WorkstationAliases.txt >> ~/.bash
+```
+giving the following aliases, and more!
 ```
 alias find_free_gpus="python ~/Scripts/FindFreeGPUs.py"
 alias tpython_ddp1="python ~/Scripts/TaskSet.py torchrun --standalone --nnodes=1 --nproc-per-node 1"
