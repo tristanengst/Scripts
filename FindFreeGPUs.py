@@ -1,6 +1,5 @@
 import argparse
 import subprocess
-from tqdm import tqdm
 
 servers = ["S1", "S2", "S3", "A3", "A4", "A8", "A9"]
 server2num_gpus = dict(S1=10, S2=10, S3=10, A3=2, A4=2, A8=2, A9=2)
@@ -22,7 +21,7 @@ def find_free_gpus(s):
 
     eq_line_idxs = [idx for idx,l in enumerate(lines) if l.startswith("|=")]
     if not len(eq_line_idxs) == 2:
-        tqdm.write(f"Error: {s} doesn't have the expected number of equal lines. Probably nvidia-smi isn't working.\n\n{lines}")
+        print(f"Error: {s} doesn't have the expected number of equal lines. Probably nvidia-smi isn't working.\n\n{lines}")
         return {i: False for i in range(server2num_gpus[s])}
 
     idx_of_last_eq_line = eq_line_idxs[-1]
@@ -50,5 +49,5 @@ if __name__ == "__main__":
     server2num_free = {s: sum(gpu2free.values()) for s,gpu2free in server2gpu2free.items()}
 
     for s in sorted(server2gpu2free, key=lambda s: server2num_free[s], reverse=True):
-        tqdm.write(f"{s}: free={server2num_free[s]}/{server2num_gpus[s]} IDs={[gpu_id for gpu_id,free in server2gpu2free[s].items() if free]}")
-    tqdm.write(f"Total free GPUs: {sum(server2num_free.values())}/{sum(server2num_gpus.values())}")
+        print(f"{s}: free={server2num_free[s]}/{server2num_gpus[s]} IDs={[gpu_id for gpu_id,free in server2gpu2free[s].items() if free]}")
+    print(f"Total free GPUs: {sum(server2num_free.values())}/{sum(server2num_gpus.values())}")
