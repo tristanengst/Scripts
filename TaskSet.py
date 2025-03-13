@@ -10,13 +10,10 @@ alias tasksetpy="python ~/Scripts/TaskSet.py"
 
 You can even combine it with the torchrun aliases:
 
-alias tpython_ddp1="python TaskSet.py torchrun --standalone --nnodes=1 --nproc-per-node 1"
-alias tpython_ddp="python TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 2"
-alias tpython_ddp2="python TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 2"
-alias tpython_ddp4="python TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 4"
-alias tpython_ddp8="python TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 8"
-alias tpython_ddp10="python TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 10"
-
+alias tpython_ddp1="python ~/Scripts/TaskSet.py torchrun --standalone --nnodes=1 --nproc-per-node 1"
+alias tpython_ddp2="python ~/Scripts/TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 2"
+alias tpython_ddp4="python ~/Scripts/TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 4"
+alias tpython_ddp8="python ~/Scripts/TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 8"
 """
 import argparse
 from collections import defaultdict
