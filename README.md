@@ -1,25 +1,27 @@
 # Scripts
-Useful scripts, primarily for manipulating SLURM jobs via Python code aliased to bash commands. Clone the repo into your home folder, and put the following in your `~/.bashrc`. Or clone it wherever and modify the aliases accordingly.
+Useful scripts and their aliases, and more aliases useful for manipulating SLURM and other ML jobs.
 
-For SLURM clusters:
+### Installation
 ```
-alias makedef="python ~/Scripts/SwitchAccounts.py --account def --job"
-alias makerrg="python ~/Scripts/SwitchAccounts.py --account rrg --job"
-alias scb="python ~/Scripts/Scb.py --job "
-alias jcat="python ~/Scripts/JobCat.py --job "
+git clone https://github.com/tristanengst/Scripts ~/Scripts # It does actually expect to be in your home directory
+python ~/Scripts/WriteAliases.py
 ```
-Both `makedef` and `makerrg` accept one or more job IDs.
 
-A bunch of other functionality is useful on APEX lab workstations. Quick install:
-```
-cd ; git clone https://github.com/tristanengst/Scripts ; cd Scripts
-cat WorkstationAliases.txt >> ~/.zshrc ; cat WorkstationAliases.txt >> ~/.bashrc
-```
-giving the following aliases, and more!
-```
-alias find_free_gpus="python ~/Scripts/FindFreeGPUs.py"
-alias tpython_ddp1="python ~/Scripts/TaskSet.py torchrun --standalone --nnodes=1 --nproc-per-node 1"
-alias tpython_ddp2="python ~/Scripts/TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 2"
-alias tpython_ddp4="python ~/Scripts/TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 4"
-alias tpython_ddp8="python ~/Scripts/TaskSet.py  torchrun --standalone --nnodes=1 --nproc-per-node 8"
-```
+### Useful on SLURM clusters
+**makedef [list of SLURM job IDs]** moves each job in the input list to the def-keli account
+**makerrg [list of SLURM job IDs]** moves each job in the input list to the rrg-keli account
+**scb [JOB ID]** is a nicer version of `scontrol JOB ID`
+**sqb** is a nicer version of `squeue` for rrg-keli and def-keli accounts, and shows jobs of the current user
+**sqbau** is a nicer version of `squeue` for rrg-keli and def-keli accounts, and shows jobs of all users
+**sshareb** is a nicer version of `sshare` for rrg-keli and def-keli accounts
+**extract_job_ids [s]** accepts copied output `[s]` of `sqb` or `sqbau` in quotes and returns all the job IDs 
+**historyb** nicely displays the command history
+**find_free_gpus** displays information about free APEX workstation and server GPUs
+
+### Useful on APEX workstations and servers
+**python_ddpX** is an alias for single-node `torchrun` with power-of-two `X` GPUs
+**tpython_ddpX** is an alias for single-node `torchrun` with power-of-two `X` GPUs, but also uses `TaskSet.py` to ensure only specific CPU cores are used
+
+### Miscellaneous
+**killwandb** pkills WandB when it's being slow and annoying
+**get_wandb_id** prints a new WandB UID to the terminal
