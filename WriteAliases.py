@@ -79,5 +79,7 @@ if __name__ == "__main__":
 
     args.files = [osp.expanduser(f) for f in args.files]
     for fname in args.files:
+        if not osp.exists(fname):
+            print(f"File {fname} doesn't exist. Create it and run this script again if you really want it.")
         _ = write_aliases_to_file(fname)
         print(f"Aliases written to {fname}")
