@@ -33,7 +33,7 @@ aliases = [
     "alias python_ddp10=\"torchrun --standalone --nnodes=1 --nproc-per-node 10\"",
     "alias tpython_ddp1=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp1\"",
     "alias tpython_ddp2=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp2\"",
-    "alias tpython_ddp2=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp3\"",
+    "alias tpython_ddp3=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp3\"",
     "alias tpython_ddp4=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp4\"",
     "alias tpython_ddp5=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp5\"",
     "alias tpython_ddp6=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp6\"",
@@ -45,7 +45,7 @@ aliases = [
     # Useful on APEX workstations and servers: Miscellanous
     "alias get_wandb_id=\"python -c 'import wandb ; print(wandb.util.generate_id())'\"",
     "alias find_free_gpus=\"python ~/.ScriptsAndAliases/FindFreeGPUs.py --hosts \"",
-    "alias killwandb=\"pkill -9 wandb\"",
+    "alias killwandb=\"pkill -u $USER -9 wandb\"",
     
     "# END USEFUL ML ALIASES"]
 
