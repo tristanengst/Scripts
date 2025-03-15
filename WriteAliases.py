@@ -71,7 +71,7 @@ def write_aliases_to_file(fname):
     with open(fname, "w") as f:
         f.write("\n".join(lines) + "\n")
 
-if __name__ == "__main__":g
+if __name__ == "__main__":
     P = argparse.ArgumentParser()
     P.add_argument("--files", nargs="+", default=["~/.bashrc", "~/.zshrc"],
         help="Files to write aliases to")
