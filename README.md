@@ -8,9 +8,10 @@ python ~/.ScriptsAndAliases/WriteAliases.py
 ```
 
 ### Useful on SLURM clusters
-`makedef [list of SLURM job IDs]` moves each job in the input list to the def-keli account \
-`makerrg [list of SLURM job IDs]` moves each job in the input list to the rrg-keli account \
-`scb [JOB ID]` is a nicer version of `scontrol JOB ID`  \
+`makedef SPACE_SEPARATED_LIST_OF_JOB_IDS` moves each job in the input list to the def-keli account \
+`makerrg SPACE_SEPARATED_LIST_OF_JOB_IDS` moves each job in the input list to the rrg-keli account \
+`scb JOB ID` is a nicer version of `scontrol JOB_ID`  \
+`scu KEY=VALUE SPACE_SEPARATED_LIST_OF_JOB_IDS` updates many jobs on SLURM. Example: `scu TimeLimit=12:00:00 123 456` updates jobs `123` and `456` to have a 12-hour time limit \
 `sqb` is a nicer version of `squeue` for rrg-keli and def-keli accounts, and shows jobs of the current user  \
 `sqbau` is a nicer version of `squeue` for rrg-keli and def-keli accounts, and shows jobs of all users \
 `sshareb` is a nicer version of `sshare` for rrg-keli and def-keli accounts \
