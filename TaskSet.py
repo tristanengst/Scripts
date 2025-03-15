@@ -12,24 +12,9 @@ import os.path as osp
 import sys
 import uuid
 
-shell2rc = dict(zsh="~/.zshrc", bash="~/.bashrc")
+from HostInfo import host2info
 
-# Change as needed
-host2info = {
-    "cs-apex-srv01s.cmpt.sfu.ca": dict(num_cpus=128, num_gpus=10),
-    "cs-apex-srv02s.cmpt.sfu.ca": dict(num_cpus=128, num_gpus=10),
-    "cs-apex-srv03s.cmpt.sfu.ca": dict(num_cpus=128, num_gpus=10),
-    "cs-apex-01.cmpt.sfu.cas": dict(num_cpus=16, num_gpus=2),
-    "cs-apex-02s.cmpt.sfu.ca": dict(num_cpus=16, num_gpus=2),
-    "cs-apex-03s.cmpt.sfu.ca": dict(num_cpus=16, num_gpus=2),
-    "cs-apex-04s.cmpt.sfu.ca": dict(num_cpus=16, num_gpus=2),
-    "cs-apex-05s.cmpt.sfu.ca": dict(num_cpus=12, num_gpus=2),
-    "cs-apex-06s.cmpt.sfu.ca": dict(num_cpus=12, num_gpus=2),
-    "cs-apex-07s.cmpt.sfu.ca": dict(num_cpus=12, num_gpus=2),
-    "cs-apex-08s.cmpt.sfu.ca": dict(num_cpus=12, num_gpus=2),
-    "cs-apex-09s.cmpt.sfu.ca": dict(num_cpus=12, num_gpus=2),
-    "cs-apex-99s.cmpt.sfu.ca": dict(num_cpus=8, num_gpus=1),
-}
+shell2rc = dict(zsh="~/.zshrc", bash="~/.bashrc")
 
 def get_gpu2cpu(*, num_cpus, num_gpus, last_gpu_gets_remaining_cpus=True):
     """Returns a GPU index -> (min CPU core index, max CPU core index) map."""

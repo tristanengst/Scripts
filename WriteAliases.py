@@ -14,23 +14,23 @@ aliases = [
     "alias sqbau=\"squeue -A rrg-keli_gpu -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'; squeue -A def-keli_gpu  -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'\"",
 
     # Useful on SLURM
-    "alias makedef=\"python ~/Scripts/SwitchAccounts.py --account def --job\"",
-    "alias makerrg=\"python ~/Scripts/SwitchAccounts.py --account rrg --job\"",
-    "alias scb=\"python ~/Scripts/Scb.py --job \"",
-    "alias scu=\"python ~/Scripts/Scu.py \"",
-    "alias extract_job_ids=\"python ~/Scripts/ExtractJobIds.py \"",
+    "alias makedef=\"python ~/.ScriptsAndAliases/SwitchAccounts.py --account def --job\"",
+    "alias makerrg=\"python ~/.ScriptsAndAliases/SwitchAccounts.py --account rrg --job\"",
+    "alias scb=\"python ~/.ScriptsAndAliases/Scb.py --job \"",
+    "alias scu=\"python ~/.ScriptsAndAliases/Scu.py \"",
+    "alias extract_job_ids=\"python ~/.ScriptsAndAliases/ExtractJobIds.py \"",
     
     # Useful APEX workstations and servers
     "alias python_ddp1=\"torchrun --standalone --nnodes=1 --nproc-per-node 1\"",
     "alias python_ddp2=\"torchrun --standalone --nnodes=1 --nproc-per-node 2\"",
     "alias python_ddp4=\"torchrun --standalone --nnodes=1 --nproc-per-node 4\"",
     "alias python_ddp8=\"torchrun --standalone --nnodes=1 --nproc-per-node 8\"",
-    "alias tpython_ddp1=\"python ~/Scripts/TaskSet.py python_ddp1\"",
-    "alias tpython_ddp2=\"python ~/Scripts/TaskSet.py python_ddp2\"",
-    "alias tpython_ddp4=\"python ~/Scripts/TaskSet.py python_ddp4\"",
-    "alias tpython_ddp8=\"python ~/Scripts/TaskSet.py python_ddp8\"",
+    "alias tpython_ddp1=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp1\"",
+    "alias tpython_ddp2=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp2\"",
+    "alias tpython_ddp4=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp4\"",
+    "alias tpython_ddp8=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp8\"",
     "alias get_wandb_id=\"python -c 'import wandb ; print(wandb.util.generate_id())'\"",
-    "alias find_free_gpus=\"python ~/Scripts/FindFreeGPUs.py\"",
+    "alias find_free_gpus=\"python ~/.ScriptsAndAliases/FindFreeGPUs.py --hosts \"",
     "alias killwandb=\"pkill -9 wandb\"",
     
     "# END USEFUL ML ALIASES"]

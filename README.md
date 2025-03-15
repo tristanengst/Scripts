@@ -3,8 +3,8 @@ Useful scripts and their aliases, and more aliases useful for manipulating SLURM
 
 ### Installation
 ```
-git clone https://github.com/tristanengst/ScriptsAndAliases ~/.scripts_and_aliases # Commands expect being in your home directory
-python ~/.scripts_and_aliases/WriteAliases.py
+git clone https://github.com/tristanengst/ScriptsAndAliases ~/.ScriptsAndAliases # Commands expect being in your home directory
+python ~/.ScriptsAndAliases/WriteAliases.py
 ```
 
 ### Useful on SLURM clusters
@@ -16,7 +16,7 @@ python ~/.scripts_and_aliases/WriteAliases.py
 `sshareb` is a nicer version of `sshare` for rrg-keli and def-keli accounts \
 `extract_job_ids [s]` accepts copied output `[s]` of `sqb` or `sqbau` in quotes and returns all the job IDs \
 `historyb` nicely displays the command history \
-`find_free_gpus` displays information about free APEX workstation and server GPUs \
+`find_free_gpus` displays information about free GPUs on APEX workstation and servers \
 
 ### Useful on APEX workstations and servers
 `python_ddpX` is an alias for single-node `torchrun` with power-of-two `X` GPUs \
