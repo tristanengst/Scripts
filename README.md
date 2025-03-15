@@ -9,19 +9,19 @@ python ~/.ScriptsAndAliases/WriteAliases.py
 ```
 
 ### Useful on SLURM Clusters
-`makedef SPACE_SEPARATED_LIST_OF_JOB_IDS` moves each job in the input list to the def-keli account
+`makedef SPACE_SEPARATED_LIST_OF_JOB_IDS` moves each job in the input list to the `def-keli` account
 
-`makerrg SPACE_SEPARATED_LIST_OF_JOB_IDS` moves each job in the input list to the rrg-keli account
+`makerrg SPACE_SEPARATED_LIST_OF_JOB_IDS` moves each job in the input list to the `rrg-keli` account
 
 `scb JOB ID` is a nicer version of `scontrol JOB_ID`
 
 `scu KEY=VALUE SPACE_SEPARATED_LIST_OF_JOB_IDS` updates many jobs on SLURM. Example: `scu TimeLimit=12:00:00 123 456` updates jobs `123` and `456` to have a 12-hour time limit
 
-`sqb` is a nicer version of `squeue` for rrg-keli and def-keli accounts, and shows jobs of the current user
+`sqb` is a nicer version of `squeue` and shows only your jobs
 
-`sqbau` is a nicer version of `squeue` for rrg-keli and def-keli accounts, and shows jobs of all users
+`sqbau` is a nicer version of `squeue` shows all jobs on Solar, and all `rrg-keli` and `def-keli` jobs on ComputeCanada
 
-`sshareb` is a nicer version of `sshare` for rrg-keli and def-keli accounts
+`sshareb` is a nicer version of `sshare` for `rrg-keli` and `def-keli` accounts
 
 `extract_job_ids [s]` accepts copied output `[s]` of `sqb` or `sqbau` in quotes and returns all the job IDs
 
