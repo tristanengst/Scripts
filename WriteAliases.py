@@ -45,7 +45,7 @@ aliases = [
     # Useful on APEX workstations and servers: Miscellanous
     "alias get_wandb_id=\"python -c 'import wandb ; print(wandb.util.generate_id())'\"",
     "alias find_free_gpus=\"python ~/.ScriptsAndAliases/FindFreeGPUs.py --hosts \"",
-    "alias killwandb=\"pkill -9 wandb\"",
+    "alias killwandb=\"pkill -u $USER -9 wandb\"",
     
     "# END USEFUL ML ALIASES"]
 
