@@ -32,6 +32,7 @@ aliases = [
     "alias python_ddp8=\"torchrun --standalone --nnodes=1 --nproc-per-node 8\"",
     "alias python_ddp9=\"torchrun --standalone --nnodes=1 --nproc-per-node 9\"",
     "alias python_ddp10=\"torchrun --standalone --nnodes=1 --nproc-per-node 10\"",
+    "alias tpython=\"python ~/.ScriptsAndAliases/TaskSet.py python\"",
     "alias tpython_ddp1=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp1\"",
     "alias tpython_ddp2=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp2\"",
     "alias tpython_ddp3=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp3\"",

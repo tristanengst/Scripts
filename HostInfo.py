@@ -4,6 +4,7 @@ Feel free to submit a pull request to add additional SSH names for hosts if you 
 use what's here. The only requirement is that no two hosts can share an SSH name.
 """
 import argparse
+import os
 import os.path as osp
 import subprocess
 
@@ -59,7 +60,7 @@ def get_updated_host_to_info(h):
     CPU cores on host [h].
     """
     if os.uname().nodename.startswith(h):
-        result = subprocess.getoutput("'nvidia-smi ; nvidia-smi --query-gpu=name --format=csv,noheader | wc -l ; nproc'")
+        result = subprocess.getoutput("nvidia-smi ; nvidia-smi --query-gpu=name --format=csv,noheader | wc -l ; nproc")
     else:
         ssh_name = host_to_ssh_name(h) if h in host2info else h
         result = subprocess.getoutput(f"ssh {ssh_name} 'nvidia-smi ; nvidia-smi --query-gpu=name --format=csv,noheader | wc -l ; nproc'")

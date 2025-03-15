@@ -12,7 +12,7 @@ import os.path as osp
 import sys
 import uuid
 
-from HostInfo import host2info
+import HostInfo
 
 shell2rc = dict(zsh="~/.zshrc", bash="~/.bashrc")
 
@@ -29,7 +29,7 @@ def get_gpu2cpu(*, num_cpus, num_gpus, last_gpu_gets_remaining_cpus=True):
 def get_cpus_from_gpus(*, gpus):
     """Returns the string of CPU indices to feed to taskset for the specified GPUs."""
     host_info = HostInfo.get_updated_host_to_info(os.uname().nodename)
-    gpu2cpu = get_gpu2cpu(num_cpus=host_info.num_cpus, num_gpus=host_info.num_gpus)
+    gpu2cpu = get_gpu2cpu(num_cpus=host_info.total_cpus, num_gpus=host_info.total_gpus)
     return ",".join([f"{gpu2cpu[gpu][0]}-{gpu2cpu[gpu][1]}" for gpu in gpus])
 
 def inset_arg_into_arg_list(*, arg_list, k, v):
