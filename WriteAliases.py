@@ -11,7 +11,6 @@ aliases = [
     "alias sqb=\"squeue -u $USER -O 'JobArrayID:.10,Name:.175,State:.8,TimeLeft:.10'\"",
     "alias historyb=\"history | cut -c 8-\"",
     "alias sshareb=\"sshare -l -A rrg-keli_gpu; sshare -l -A def-keli_gpu\"",
-    "alias sqbau=\"squeue -A rrg-keli_gpu -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'; squeue -A def-keli_gpu  -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'\"",
 
     # Useful on SLURM, requires a Python script
     "alias makedef=\"python ~/.ScriptsAndAliases/SwitchAccounts.py --account def --job\"",
@@ -19,6 +18,7 @@ aliases = [
     "alias scb=\"python ~/.ScriptsAndAliases/Scb.py --job \"",
     "alias scu=\"python ~/.ScriptsAndAliases/Scu.py \"",
     "alias extract_job_ids=\"python ~/.ScriptsAndAliases/ExtractJobIds.py \"",
+    "alias sqbau=\"~/.ScriptsAndAliases/Sqbau.py\"",
     
     # Useful APEX workstations and servers: DDP and TaskSet
     "alias python_ddp1=\"torchrun --standalone --nnodes=1 --nproc-per-node 1\"",
