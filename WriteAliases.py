@@ -11,7 +11,6 @@ aliases = [
     "alias sqb=\"squeue -u $USER -O 'JobArrayID:.10,Name:.175,State:.8,TimeLeft:.10'\"",
     "alias historyb=\"history | cut -c 8-\"",
     "alias sshareb=\"sshare -l -A rrg-keli_gpu; sshare -l -A def-keli_gpu\"",
-    "alias sqbau=\"squeue -A rrg-keli_gpu -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'; squeue -A def-keli_gpu  -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'\"",
 
     # Useful on SLURM, requires a Python script
     "alias makedef=\"python ~/.ScriptsAndAliases/SwitchAccounts.py --account def --job\"",
@@ -19,15 +18,16 @@ aliases = [
     "alias scb=\"python ~/.ScriptsAndAliases/Scb.py --job \"",
     "alias scu=\"python ~/.ScriptsAndAliases/Scu.py \"",
     "alias extract_job_ids=\"python ~/.ScriptsAndAliases/ExtractJobIds.py \"",
+    "alias sqbau=\"~/.ScriptsAndAliases/Sqbau.py\"",
     
     # Useful APEX workstations and servers: DDP and TaskSet
     "alias python_ddp1=\"torchrun --standalone --nnodes=1 --nproc-per-node 1\"",
     "alias python_ddp2=\"torchrun --standalone --nnodes=1 --nproc-per-node 2\"",
-    "alias python_ddp4=\"torchrun --standalone --nnodes=1 --nproc-per-node 3\"",
+    "alias python_ddp3=\"torchrun --standalone --nnodes=1 --nproc-per-node 3\"",
     "alias python_ddp4=\"torchrun --standalone --nnodes=1 --nproc-per-node 4\"",
-    "alias python_ddp6=\"torchrun --standalone --nnodes=1 --nproc-per-node 5\"",
-    "alias python_ddp7=\"torchrun --standalone --nnodes=1 --nproc-per-node 6\"",
-    "alias python_ddp8=\"torchrun --standalone --nnodes=1 --nproc-per-node 7\"",
+    "alias python_ddp5=\"torchrun --standalone --nnodes=1 --nproc-per-node 5\"",
+    "alias python_ddp6=\"torchrun --standalone --nnodes=1 --nproc-per-node 6\"",
+    "alias python_ddp7=\"torchrun --standalone --nnodes=1 --nproc-per-node 7\"",
     "alias python_ddp8=\"torchrun --standalone --nnodes=1 --nproc-per-node 8\"",
     "alias python_ddp9=\"torchrun --standalone --nnodes=1 --nproc-per-node 9\"",
     "alias python_ddp10=\"torchrun --standalone --nnodes=1 --nproc-per-node 10\"",
@@ -79,5 +79,8 @@ if __name__ == "__main__":
 
     args.files = [osp.expanduser(f) for f in args.files]
     for fname in args.files:
+        if not osp.exists(fname):
+            print(f"File {fname} doesn't exist. Create it and run this script again if you really want it.")
+            continue
         _ = write_aliases_to_file(fname)
         print(f"Aliases written to {fname}")
