@@ -71,7 +71,7 @@ def write_aliases_to_file(fname):
     with open(fname, "w") as f:
         f.write("\n".join(lines) + "\n")
 
-if __name__ == "__main__":
+if __name__ == "__main__":g
     P = argparse.ArgumentParser()
     P.add_argument("--files", nargs="+", default=["~/.bashrc", "~/.zshrc"],
         help="Files to write aliases to")
@@ -81,5 +81,6 @@ if __name__ == "__main__":
     for fname in args.files:
         if not osp.exists(fname):
             print(f"File {fname} doesn't exist. Create it and run this script again if you really want it.")
+            continue
         _ = write_aliases_to_file(fname)
         print(f"Aliases written to {fname}")
