@@ -28,11 +28,8 @@ def get_gpu2cpu(*, num_cpus, num_gpus, last_gpu_gets_remaining_cpus=True):
 
 def get_cpus_from_gpus(*, gpus):
     """Returns the string of CPU indices to feed to taskset for the specified GPUs."""
-    host = os.uname().nodename
-    if not host in host2info:
-        raise ValueError(f"Unknown host {host}")
-    num_cpus, num_gpus = host2info[host]["num_cpus"], host2info[host]["num_gpus"]
-    gpu2cpu = get_gpu2cpu(num_cpus=num_cpus, num_gpus=num_gpus)
+    host_info = HostInfo.get_updated_host_to_info(os.uname().nodename)
+    gpu2cpu = get_gpu2cpu(num_cpus=host_info.num_cpus, num_gpus=host_info.num_gpus)
     return ",".join([f"{gpu2cpu[gpu][0]}-{gpu2cpu[gpu][1]}" for gpu in gpus])
 
 def inset_arg_into_arg_list(*, arg_list, k, v):

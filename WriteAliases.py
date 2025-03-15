@@ -7,28 +7,42 @@ import re
 aliases = [
     "# START USEFUL ML ALIASES",
 
-    # Useful on SLUR, doesn't require a Python script
+    # Useful on SLURM, doesn't require a Python script
     "alias sqb=\"squeue -u $USER -O 'JobArrayID:.10,Name:.175,State:.8,TimeLeft:.10'\"",
     "alias historyb=\"history | cut -c 8-\"",
     "alias sshareb=\"sshare -l -A rrg-keli_gpu; sshare -l -A def-keli_gpu\"",
     "alias sqbau=\"squeue -A rrg-keli_gpu -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'; squeue -A def-keli_gpu  -O 'JobArrayID:11,UserName:6,State:9,tres-per-node:17,TimeLeft:12,Reason:20,Name:.160'\"",
 
-    # Useful on SLURM
+    # Useful on SLURM, requires a Python script
     "alias makedef=\"python ~/.ScriptsAndAliases/SwitchAccounts.py --account def --job\"",
     "alias makerrg=\"python ~/.ScriptsAndAliases/SwitchAccounts.py --account rrg --job\"",
     "alias scb=\"python ~/.ScriptsAndAliases/Scb.py --job \"",
     "alias scu=\"python ~/.ScriptsAndAliases/Scu.py \"",
     "alias extract_job_ids=\"python ~/.ScriptsAndAliases/ExtractJobIds.py \"",
     
-    # Useful APEX workstations and servers
+    # Useful APEX workstations and servers: DDP and TaskSet
     "alias python_ddp1=\"torchrun --standalone --nnodes=1 --nproc-per-node 1\"",
     "alias python_ddp2=\"torchrun --standalone --nnodes=1 --nproc-per-node 2\"",
+    "alias python_ddp4=\"torchrun --standalone --nnodes=1 --nproc-per-node 3\"",
     "alias python_ddp4=\"torchrun --standalone --nnodes=1 --nproc-per-node 4\"",
+    "alias python_ddp6=\"torchrun --standalone --nnodes=1 --nproc-per-node 5\"",
+    "alias python_ddp7=\"torchrun --standalone --nnodes=1 --nproc-per-node 6\"",
+    "alias python_ddp8=\"torchrun --standalone --nnodes=1 --nproc-per-node 7\"",
     "alias python_ddp8=\"torchrun --standalone --nnodes=1 --nproc-per-node 8\"",
+    "alias python_ddp9=\"torchrun --standalone --nnodes=1 --nproc-per-node 9\"",
+    "alias python_ddp10=\"torchrun --standalone --nnodes=1 --nproc-per-node 10\"",
     "alias tpython_ddp1=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp1\"",
     "alias tpython_ddp2=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp2\"",
+    "alias tpython_ddp2=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp3\"",
     "alias tpython_ddp4=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp4\"",
+    "alias tpython_ddp5=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp5\"",
+    "alias tpython_ddp6=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp6\"",
+    "alias tpython_ddp7=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp7\"",
     "alias tpython_ddp8=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp8\"",
+    "alias tpython_ddp9=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp9\"",
+    "alias tpython_ddp10=\"python ~/.ScriptsAndAliases/TaskSet.py python_ddp10\"",
+
+    # Useful on APEX workstations and servers: Miscellanous
     "alias get_wandb_id=\"python -c 'import wandb ; print(wandb.util.generate_id())'\"",
     "alias find_free_gpus=\"python ~/.ScriptsAndAliases/FindFreeGPUs.py --hosts \"",
     "alias killwandb=\"pkill -9 wandb\"",
