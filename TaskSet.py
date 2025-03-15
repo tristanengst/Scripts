@@ -74,12 +74,17 @@ P.add_argument("--taskset_scripts_dir", default=osp.expanduser("~/.taskset_scrip
     help="Directory to store taskset scripts")
 P.add_argument("--taskset_debug", action="store_true",
     help="Print the taskset script instead of running it")
+P.add_argument("--time", type=str, default=None,
+    help="Time limit for the script passed to timeout command")
 args, unparsed_args = P.parse_known_args()
 
 args.c = get_cpus_from_gpus(gpus=args.gpus) if args.c == "parse_gpus" else args.c
 unparsed_args = inset_arg_into_arg_list(arg_list=unparsed_args, k="gpus", v=[str(gpu) for gpu in range(len(args.gpus))])
 
 unparsed_args[0] = get_script_from_alias(unparsed_args[0])
+
+if not args.time is None:
+    unparsed_args = ["timeout", args.time] + unparsed_args
 
 script_file = osp.join(args.taskset_scripts_dir, f"{uuid.uuid4()}.sh")
 script = f"source {shell2rc[args.shell]}\nCUDA_VISIBLE_DEVICES={','.join([str(g) for g in args.gpus])} taskset -c {args.c} {' '.join(unparsed_args)}\n"
