@@ -5,6 +5,12 @@ import argparse
 import subprocess
 import HostInfo
 
+# Sometimes this takes a bit, so tqdm is nice. But we can't assume it's installed.
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(x): return x
+
 def find_free_gpus(h):
     """Returns a dictionary containing which GPUs on host [h] are free or not.
     Heuristically, a free GPU is one for which nvidia-smi doesn't show any processes
@@ -40,7 +46,7 @@ if __name__ == "__main__":
 
     args.hosts = HostInfo.host2info.keys() if len(args.hosts) == 0 else args.hosts
 
-    host2gpu2free = {h: find_free_gpus(h) for h in args.hosts}
+    host2gpu2free = {h: find_free_gpus(h) for h in tqdm(args.hosts)}
     host2num_free = {h: sum(gpu2free.values()) for h,gpu2free in host2gpu2free.items()}
     host2total = {h: len(gpu2free) for h,gpu2free in host2gpu2free.items()}
 
