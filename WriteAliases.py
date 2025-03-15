@@ -18,7 +18,8 @@ aliases = [
     "alias scb=\"python ~/.ScriptsAndAliases/Scb.py --job \"",
     "alias scu=\"python ~/.ScriptsAndAliases/Scu.py \"",
     "alias extract_job_ids=\"python ~/.ScriptsAndAliases/ExtractJobIds.py \"",
-    "alias sqbau=\"~/.ScriptsAndAliases/Sqbau.py\"",
+    "alias sqbau=\"python ~/.ScriptsAndAliases/Sqbau.py\"",
+    "alias extract_uids=\"python ExtractUIDs.py \"",
     
     # Useful APEX workstations and servers: DDP and TaskSet
     "alias python_ddp1=\"torchrun --standalone --nnodes=1 --nproc-per-node 1\"",
