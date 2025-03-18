@@ -18,6 +18,10 @@ P.add_argument("--ignore_hidden", default=1, type=int, choices=[0, 1],
     help="Ignore hidden files")
 args = P.parse_args()
 
+if args.last_k_days > 0:
+    print(f"Got last_k_days={args.last_k_days}, will interpret as negative")
+    args.last_k_days = -1 * args.last_k_days
+    
 files_in_folder = [f"{args.dir}/{f}" for f in os.listdir(args.dir)]
 files_to_tar = [f for f in files_in_folder if is_newer_than(f, args.last_k_days)]
 files_to_tar = [f for f in files_to_tar if not (f.startswith(".") and args.ignore_hidden)]
