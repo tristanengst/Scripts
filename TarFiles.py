@@ -10,7 +10,7 @@ def is_newer_than(f, days, ignore_errors=False):
 P = argparse.ArgumentParser()
 P.add_argument("--dir",
     help="Folder to tar files in")
-P.add_argument("--last_k_days",
+P.add_argument("--last_k_days", type=int,
     help="Only tar files after this date", default=-60)
 P.add_argument("--out", required=True,
     help="Name of tar file to create")
