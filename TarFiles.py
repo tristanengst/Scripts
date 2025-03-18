@@ -11,9 +11,7 @@ except ImportError:
 
 def tar_imle_ssl_dir(args):
 
-    # dirs_to_tar = ["models_mae", "models_imle", "models_stop", "models_dino", "probes", "finetunes"]
-
-    dirs_to_tar = ["foo", "bar", "gat"]
+    dirs_to_tar = ["models_mae", "models_imle", "models_stop", "models_dino", "probes", "finetunes"]
 
     if "narval" in os.uname().nodename:
         cluster = "narval"

@@ -20,7 +20,7 @@ def extract_line_contents(*, s, key):
 
 if __name__ == "__main__":
     P = argparse.ArgumentParser()
-    P.add_argument("-jobs", default=None,
+    P.add_argument("--jobs", default=None,
         help="Squeue output containing jobs. If None, computes for the current user")
     P.add_argument("--globs", default=1, choices=[0, 1], type=int,
         help="Print extracted job IDs with jobs")
@@ -39,7 +39,11 @@ if __name__ == "__main__":
 
         if "Comment=" in scontrol_output:
             comment = extract_line_contents(s=scontrol_output, key="Comment=")
-            comment = json.loads(comment)
+            try:
+                comment = json.loads(comment)
+            except:
+                comment = comment.replace("'", "\"")
+                comment = json.loads(comment)
             line2uid[l] = comment["uid"]
             continue
 

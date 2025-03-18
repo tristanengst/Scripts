@@ -83,8 +83,9 @@ unparsed_args = inset_arg_into_arg_list(arg_list=unparsed_args, k="gpus", v=[str
 
 unparsed_args[0] = get_script_from_alias(unparsed_args[0])
 
-if not args.time is None:
-    unparsed_args = ["timeout", args.time] + unparsed_args
+# Really useful for submitting things in the early morning and letting them run till
+# before someone else could reasonably wake up!
+unparsed_args = unparsed_args if args.time is None else (["timeout", args.time] + unparsed_args)
 
 script_file = osp.join(args.taskset_scripts_dir, f"{uuid.uuid4()}.sh")
 script = f"source {shell2rc[args.shell]}\nCUDA_VISIBLE_DEVICES={','.join([str(g) for g in args.gpus])} taskset -c {args.c} {' '.join(unparsed_args)}\n"
